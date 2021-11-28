@@ -35,8 +35,6 @@ export const Pokemons: React.FC = () => {
             setPokemons(newData);
             setSearch(text);
             } else {
-            // Inserted text is blank
-            // Update FilteredDataSource with masterDataSource
             getPokemons();
             setSearch(text);
         }
