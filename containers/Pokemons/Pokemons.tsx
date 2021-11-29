@@ -4,8 +4,6 @@ import { pokeAPI } from "../../services/pokeAPI";
 import { PokemonShortInfo } from "../../types/Pokemon";
 import { Pokemon } from "./components/Pokemon";
 
-
-
 export const Pokemons: React.FC = () => {
     const [pokemons, setPokemons] = useState<PokemonShortInfo[]>();
     const [search, setSearch] = useState('');
@@ -27,14 +25,12 @@ export const Pokemons: React.FC = () => {
             const newData = pokemonsDataSource?.filter(
                 function (item) {
                     const itemData = item.name
-                    ? item.name.toLowerCase()
-                    : ''.toLowerCase();
-                const textData = text.toLowerCase();
-                return itemData.indexOf(textData) > -1;
+                    const textData = text.toLowerCase();
+                    return itemData.indexOf(textData) > -1;
                 })
             setPokemons(newData);
             setSearch(text);
-            } else {
+        } else {
             getPokemons();
             setSearch(text);
         }
@@ -48,7 +44,7 @@ export const Pokemons: React.FC = () => {
     <View style={styles.container}>
         <Text style={styles.title}>Pokeapp</Text>
         <TextInput
-          style={styles.textInputStyle}
+          style={styles.textInput}
           onChangeText={(text) => searchFilterPokemons(text)}
           value={search}
           underlineColorAndroid="transparent"
@@ -78,7 +74,7 @@ const styles = StyleSheet.create({
         padding: 16,
         marginTop: 16,
     },
-    textInputStyle: {
+    textInput: {
         height: 40,
         borderWidth: 1,
         paddingLeft: 20,
